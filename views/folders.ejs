@@ -1,0 +1,20 @@
+<h1>Your Folders</h1>
+
+<form method="POST" action="/folders">
+    <input type="text" name="name" placeholder="New folder name" required />
+    <button type="submit">Create Folder</button>
+</form>
+
+<ul>
+    <% folders.forEach(folder=> { %>
+        <li>
+            <a href="/folders/<%= folder.id %>">
+                <%= folder.name %>
+            </a>
+            (<%= folder.files.length %> files)
+                <form method="POST" action="/folders/<%= folder.id %>/delete" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+        </li>
+        <% }) %>
+</ul>

@@ -1,0 +1,14 @@
+<h1>Folder: <%= folder.name %>
+</h1>
+<a href="/folders">← Back to folders</a>
+
+<ul>
+    <% folder.files.forEach(file=> { %>
+        <li>
+            <strong>
+                <%= file.name %>
+            </strong> –
+            <a href="/uploads/<%= file.url.split('\\').pop() %>" target="_blank">View</a>
+        </li>
+        <% }) %>
+</ul>

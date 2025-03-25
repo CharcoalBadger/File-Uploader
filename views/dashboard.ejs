@@ -1,0 +1,27 @@
+<h1>Welcome <%= user.email %>!</h1>
+
+<a href="/upload">Upload a file</a> |
+<a href="/folders">Your folders</a> |
+<a href="/logout">Logout</a>
+
+<hr />
+
+<h2>Your Uploaded Files:</h2>
+
+<% if (files.length===0) { %>
+    <p>No files uploaded yet.</p>
+    <% } else { %>
+        <ul>
+            <% files.forEach(file=> { %>
+                <li>
+                    <strong>
+                        <%= file.name %>
+                    </strong> –
+                    <%= Math.round(file.size / 1024) %> KB –
+                        Uploaded: <%= new Date(file.createdAt).toLocaleString() %> –
+                            <a href="/uploads/<%= file.url.split('\\').pop() %>" target="_blank">View</a> |
+                            <a href="/download/<%= file.id %>">Download</a>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
